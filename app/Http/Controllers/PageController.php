@@ -65,7 +65,7 @@ class PageController extends Controller
         }
 
         return view('index', [
-            'data' => Inout::latest()->paginate(4),
+            'data' => Inout::latest()->filter(request(['date']))->paginate(4)->withQueryString(),
             'total_income' => $total_income,
             'total_outcome' => $total_outcome,
             'day_arr' => $day_arr,
